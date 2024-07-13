@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles_Dtec_vid.css') }}">
+    <title>Resultado del Video</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Resultado del Video Procesado</h1>
+        
+        <!-- Video Procesado -->
+        <div class="video-container">
+            <video controls>
+                <source src="{{ url_for('static', filename='processed/' + video_filename) }}" type="video/mp4">
+                Tu navegador no soporta el formato de video.
+            </video>
+            <!-- Botones para Cargar otro Video y Descargar el Excel -->
+            <div class="buttons">
+                <a href="{{ url_for('video_app.upload_video') }}">Cargar Otro Video</a>
+                <a href="{{ url_for('video_app.download_results') }}">Descargar Excel Resultados</a>
+                <a href="{{ url_for('video_app.download_summary') }}">Descargar Resumen</a>
+            </div>
+        </div>
+
+        <!-- Tabla de Resumen -->
+        <h2>Frecuencias y Porcentajes</h2>
+        <table class="summary-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Parte del Cuerpo</th>
+                    <th>Código</th>
+                    <th>Frecuencia</th>
+                    <th>Porcentaje (%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for resumen in resumen_data %}
+                <tr>
+                    <td>{{ resumen['ID'] }}</td>
+                    <td>{{ resumen['Parte del Cuerpo'] }}</td>
+                    <td>{{ resumen['Código'] }}</td>
+                    <td>{{ resumen['Frecuencia'] }}</td>
+                    <td>{{ resumen['Porcentaje (%)'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Tabla de Resultados -->
+        <h2>Resultados del Análisis</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Conductor ID</th>
+                    <th>Frame</th>
+                    <th>Espalda</th>
+                    <th>Brazos</th>
+                    <th>Piernas</th>
+                    <th>Carga</th>
+                    <th>Nivel de Riesgo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for resultado in excel_data %}
+                <tr>
+                    <td>{{ resultado['Conductor ID'] }}</td>
+                    <td>{{ resultado['Frame'] }}</td>
+                    <td>{{ resultado['Espalda'] }}</td>
+                    <td>{{ resultado['Brazos'] }}</td>
+                    <td>{{ resultado['Piernas'] }}</td>
+                    <td>{{ resultado['Carga'] }}</td>
+                    <td>{{ resultado['Riesgo'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

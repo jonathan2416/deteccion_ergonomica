@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Detección</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles_main.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="fondo1">
+            <img src="{{ url_for('static', filename='imagenes/fondo1.jpg') }}" alt="Fondo">
+        </div>
+        <div class="button-container">
+            <br>
+            <h1>Bienvenido al Sistema</h1>
+            <br>
+            <h2>Seleccione la opción que desea analizar</h2>
+            <br>
+            <form action="{{ url_for('image_app.upload_image') }}" method="get">
+                <button type="submit" class="btn">Detector de imagen</button>
+            </form>
+            <br>
+            <form action="{{ url_for('video_app.upload_video') }}" method="get">
+                <button type="submit" class="btn">Detector de video</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+

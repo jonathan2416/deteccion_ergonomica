@@ -1,0 +1,148 @@
+/* Estilos generales */
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #f0f0f0; /* Fallback background color */
+    overflow: hidden; /* Prevent scrollbars */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    padding: 20px; /* Add padding for smaller screens */
+    box-sizing: border-box; /* Include padding in the element's total width and height */
+}
+
+.fondo1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.fondo1 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.button-container {
+    text-align: center;
+    padding: 5px;
+    border: 4px solid #ccc;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    position: relative;
+    max-width: 90%; /* Limit the container's width */
+    margin: 0 auto; /* Center the container */
+}
+
+.button-container:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 12px 24px rgba(0, 0, 0, 0.2);
+    transform: translateY(-10px);
+}
+
+h1, h2 {
+    margin: 10px 0;
+    font-size: 2rem; /* Responsive font size */
+}
+
+form {
+    margin: 10px 0;
+}
+
+.btn {
+    padding: 12px 24px;
+    font-size: 1rem; /* Responsive font size */
+    color: #fff;
+    background: linear-gradient(135deg, #ff6b6b, #f06595); /* Gradient background */
+    border: none;
+    border-radius: 30px; /* Rounded corners */
+    cursor: pointer;
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 12px rgba(0, 0, 0, 0.2); /* Initial shadow */
+    position: relative; /* For pseudo-element positioning */
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #f06595, #ff6b6b); /* Reverse gradient on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 12px 24px rgba(0, 0, 0, 0.3); /* Elevated shadow */
+    transform: scale(1.1); /* Slightly enlarges the button */
+}
+
+.btn:active {
+    background: linear-gradient(135deg, #f06595, #ff6b6b); /* Maintain gradient */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Smaller shadow for pressed effect */
+    transform: scale(0.95); /* Slightly shrinks the button to simulate a press */
+    color: #08f169;
+}
+
+.btn:focus {
+    outline: none;
+    border: 2px solid #fff; /* Custom focus border */
+}
+
+/* Active State Effect */
+.btn:active::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.2); /* White overlay effect */
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0); /* Start with scale 0 */
+    transition: transform 0.3s ease; /* Smooth scaling */
+}
+
+.btn:active {
+    color: #fff; /* Ensure text color remains white */
+}
+
+.btn:active::after {
+    transform: translate(-50%, -50%) scale(1); /* Expand the overlay effect */
+}
+
+/* Media Queries for Responsive Design */
+
+@media (max-width: 768px) {
+    .button-container {
+        padding: 10px;
+        max-width: 95%;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    h1, h2 {
+        font-size: 1.5rem; /* Smaller font size on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .btn {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+    }
+
+    h1, h2 {
+        font-size: 1.2rem; /* Further reduce font size on very small screens */
+    }
+}
+

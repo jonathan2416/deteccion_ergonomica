@@ -1,0 +1,103 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.image-section {
+    width: 100%;
+    max-width: 45%;
+    margin-bottom: 20px;
+}
+
+.image-section img {
+    width: 100%;
+    height: auto;
+}
+
+.results-section {
+    width: 100%;
+    max-width: 45%;
+    text-align: left;
+    
+}
+
+.results-section table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    border: 1px solid #141313; /* Borde de la tabla */
+    width: 350px; /* Ancho de la tabla según tu estilo */
+    height: 300px; /* Altura de la tabla según tu estilo */
+}
+
+.results-section table td, .results-section table th {
+    border: 2px solid #e6e2e2;
+    padding: 3px 2px;
+    font-size: 13px;
+    text-align: center; /* Centra el contenido dentro de las celdas */
+}
+
+.results-section table tbody td:nth-child(even) {
+    background: #0b81e9;
+}
+
+.results-section table tfoot td {
+    font-size: 14px;
+}
+
+.results-section table thead {
+    background: #0b07e4;
+    border-bottom: 1px solid #1ec6f0;
+}
+
+.results-section table thead th {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333333;
+    text-align: center;
+    border-left: 1px solid #23e463;
+}
+
+.results-section table thead th:first-child {
+    border-left: none;
+}
+
+.graph-section {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a[href$=".xlsx"] {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+}

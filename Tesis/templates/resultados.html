@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados Ergonómicos</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles_resultados.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Resultados Ergonómicos</h1>
+        
+        <div class="content">
+            <div class="image-section">
+                {% if image_filename %}
+                    <img src="{{ url_for('image_app.processed_image', filename=image_filename) }}" alt="Imagen Procesada">
+                {% endif %}
+            </div>
+            
+            <div class="results-section">
+                <h2>Resultados de Postura:</h2>
+                <table>
+                    <tr>
+                        <th>Parte del Cuerpo</th>
+                        <th>Nivel</th>
+                        <th>Categoría</th>
+                    </tr>
+                    {% for parte, (nivel, categoria) in resultados.items() %}
+                        <tr>
+                            <td>{{ parte }}</td>
+                            <td>{{ nivel }}</td>
+                            <td>{{ categoria }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+
+        {% if grafico_filename %}
+            <div class="graph-section">
+                <h2>Gráfico Ergonómico</h2>
+                <img src="{{ url_for('image_app.processed_image', filename=grafico_filename) }}" alt="Gráfico Ergonómico">
+            </div>
+        {% endif %}
+
+        <div class="footer">
+            {% if excel_filename %}
+                <p><a href="{{ url_for('image_app.download_excel', filename=excel_filename) }}">Descargar Resultados en Excel</a></p>
+            {% endif %}
+            <p><a href="{{ url_for('image_app.upload_image') }}">Subir otra imagen</a></p>
+        </div>
+    </div>
+</body>
+</html>

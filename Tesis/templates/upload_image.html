@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir Video</title>
+</head>
+<body>
+    <h1>Subir Video</h1>
+    <form action="{{ url_for('video_app.upload_video') }}" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="video/*" required>
+        <input type="submit" value="Subir Video">
+    </form>
+</body>
+</html>
